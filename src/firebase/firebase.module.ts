@@ -4,6 +4,7 @@ import { FirebaseController } from './firebase.controller';
 
 @Module({
   providers: [FirebaseService],
-  controllers: [FirebaseController]
+  controllers: [FirebaseController],
+  exports: [FirebaseService]
 })
 export class FirebaseModule {}
