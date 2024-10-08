@@ -32,4 +32,11 @@ export class UsersController {
 
     return { names, emails };
   }
+
+  @Get('reverse')
+  async getReverseUserNames() {
+    const users = await this.firebaseService.getData('users');
+    const names = users.map(user => user.name);
+    return names.reverse();
+  }
 }
