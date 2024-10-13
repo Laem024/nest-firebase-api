@@ -5,8 +5,12 @@ import * as serviceAccount from '../../firebase/firebase-adminsdk.json';
 @Injectable()
 export class FirebaseService implements OnModuleInit {
   onModuleInit() {
+
+    const firebaseAdminSdkJson = JSON.parse(process.env.FIREBASE_ADMIN_SDK);
+
     admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+      //credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+      credential: admin.credential.cert(firebaseAdminSdkJson),
       databaseURL: 'https://db-paralelo.firebaseio.com',  // Cambia <your-project-id> por tu ID de proyecto
     });
   }
