@@ -15,25 +15,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the repository
+    # Checkout the repository (use the latest version)
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    # Set up Docker Buildx (for building Docker images)
+    # Set up Docker Buildx (use the latest version)
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v2
 
-    # Log in to Google Cloud
+    # Log in to Google Cloud (use the latest version)
     - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v1
+      uses: google-github-actions/auth@v2
       with:
         credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
     - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v1
+      uses: google-github-actions/setup-gcloud@v2
       with:
         project_id: ${{ secrets.GCLOUD_PROJECT }}
-        service_account_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
         export_default_credentials: true
 
     # Set environment variable for Firebase Admin SDK
@@ -57,19 +56,18 @@ jobs:
 
     steps:
     - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v1
+      uses: google-github-actions/auth@v2
       with:
         credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
-    # Set up Google Cloud SDK
+    # Set up Google Cloud SDK (use the latest version)
     - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v1
+      uses: google-github-actions/setup-gcloud@v2
       with:
         project_id: ${{ secrets.GCLOUD_PROJECT }}
-        service_account_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
         export_default_credentials: true
 
-    # Deploy to Google Cloud
+    # Deploy to Google Cloud Run
     - name: Deploy to Google Cloud Run
       run: |
         gcloud run deploy nestjs-api \
