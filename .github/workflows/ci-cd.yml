@@ -65,11 +65,11 @@ jobs:
         service_account_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
         export_default_credentials: true
 
-    # Deploy to Google Cloud (Compute Engine, Kubernetes, or App Engine)
-    - name: Deploy to Google Cloud
+    # Deploy to Google Cloud
+    - name: Deploy to Google Cloud Run
       run: |
         gcloud run deploy nestjs-api \
         --image=gcr.io/${{ secrets.GCLOUD_PROJECT }}/nestjs-api:$GITHUB_SHA \
-        --region=$GCLOUD_COMPUTE_ZONE \
+        --region=${{ secrets.GCLOUD_COMPUTE_ZONE }} \
         --platform managed \
         --allow-unauthenticated
