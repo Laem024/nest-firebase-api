@@ -36,6 +36,10 @@ jobs:
         service_account_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
         export_default_credentials: true
 
+    # Set environment variable for Firebase Admin SDK
+    - name: Set environment variable for Firebase
+      run: echo "FIREBASE_ADMIN_SDK=${{ secrets.FIREBASE_ADMIN_SDK }}" >> $GITHUB_ENV
+
     # Build the Docker image
     - name: Build Docker Image
       run: |
