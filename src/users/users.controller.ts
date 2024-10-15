@@ -39,4 +39,11 @@ export class UsersController {
     const names = users.map(user => user.name).reverse();
     return names;
   }
+
+  @Get('reverseNew')
+  async getReverseUserNamesNew() {
+    const users = await this.firebaseService.getData('users');
+    const names = users.map(user => user.name).reverse();
+    return names;
+  }
 }
