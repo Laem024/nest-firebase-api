@@ -29,12 +29,11 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
+    # Set up Google Cloud SDK
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
       with:
         project_id: ${{ secrets.GCLOUD_PROJECT }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
 
     # Set environment variable for Firebase Admin SDK
     - name: Set environment variable for Firebase
@@ -66,7 +65,6 @@ jobs:
       uses: google-github-actions/setup-gcloud@v2
       with:
         project_id: ${{ secrets.GCLOUD_PROJECT }}
-        export_default_credentials: true
 
     # Deploy to Google Cloud Run
     - name: Deploy to Google Cloud Run
